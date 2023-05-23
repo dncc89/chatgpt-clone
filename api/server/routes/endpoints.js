@@ -15,6 +15,12 @@ const getChatGPTBrowserModels = () => {
   return models;
 };
 
+const getLlamaModels = () => {
+  let models = ['ggml-vicuna1.17b-q5_1.bin'];
+  if (process.env.GPT_LLAMA_MODELS) models = String(process.env.GPT_LLAMA_MODELS).split(',');
+  return models;
+};
+
 let i = 0;
 router.get('/', async function (req, res) {
   let key, palmUser;
@@ -41,6 +47,7 @@ router.get('/', async function (req, res) {
       : false;
   const azureOpenAI = !!process.env.AZURE_OPENAI_KEY;
   const apiKey = process.env.OPENAI_KEY || process.env.AZURE_OPENAI_API_KEY;
+  const llama = process.env.GPT_LLAMA_URL ? { availableModels: getLlamaModels() } : false;
   const openAI = apiKey
     ? { availableModels: getOpenAIModels(), userProvide: apiKey === 'user_provided' }
     : false;
@@ -54,7 +61,7 @@ router.get('/', async function (req, res) {
     }
     : false;
 
-  res.send(JSON.stringify({ azureOpenAI, openAI, google, bingAI, chatGPTBrowser }));
+  res.send(JSON.stringify({ azureOpenAI, openAI, google, bingAI, chatGPTBrowser, llama }));
 });
 
-module.exports = { router, getOpenAIModels, getChatGPTBrowserModels };
+module.exports = { router, getOpenAIModels, getChatGPTBrowserModels, getLlamaModels };

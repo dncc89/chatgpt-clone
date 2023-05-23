@@ -3,6 +3,7 @@ import React from 'react';
 import OpenAISettings from './OpenAI/Settings.jsx';
 import BingAISettings from './BingAI/Settings.jsx';
 import GoogleSettings from './Google/Settings.jsx';
+import LlamaSettings from './Llama/Settings.jsx';
 
 // A preset dialog to show readonly preset values.
 const Settings = ({ preset, ...props }) => {
@@ -36,6 +37,21 @@ const Settings = ({ preset, ...props }) => {
     } else if (endpoint === 'google') {
       return (
         <GoogleSettings
+          model={preset?.model}
+          modelLabel={preset?.modelLabel}
+          promptPrefix={preset?.promptPrefix}
+          examples={preset?.examples}
+          temperature={preset?.temperature}
+          topP={preset?.topP}
+          topK={preset?.topK}
+          maxOutputTokens={preset?.maxOutputTokens}
+          edit={true}
+          {...props}
+        />
+      );
+    } else if (endpoint === 'llama') {
+      return (
+        <LlamaSettings
           model={preset?.model}
           modelLabel={preset?.modelLabel}
           promptPrefix={preset?.promptPrefix}

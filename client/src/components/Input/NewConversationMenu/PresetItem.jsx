@@ -32,6 +32,10 @@ export default function PresetItem({
       const { modelLabel, model } = preset;
       if (model) _title += `: ${model}`;
       if (modelLabel) _title += ` as ${modelLabel}`;
+    } else if (endpoint === 'llama') {
+      const { modelLabel, model } = preset;
+      if (model) _title += `: ${model}`;
+      if (modelLabel) _title += ` as ${modelLabel}`;
     } else if (endpoint === 'bingAI') {
       const { jailbreak, toneStyle } = preset;
       if (toneStyle) _title += `: ${toneStyle}`;

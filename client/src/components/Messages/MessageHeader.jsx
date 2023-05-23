@@ -25,7 +25,14 @@ const MessageHeader = ({ isSearchView = false }) => {
         const { modelLabel, model } = conversation;
         if (model) _title += `: ${model}`;
         if (modelLabel) _title += ` as ${modelLabel}`;
-      } else if (endpoint === 'bingAI') {
+      }
+      else if (endpoint === 'llama') {
+        _title = 'LLaMa.cpp';
+        const { modelLabel, model } = conversation;
+        if (model) _title += `: ${model}`;
+        if (modelLabel) _title += ` as ${modelLabel}`;
+      }
+      else if (endpoint === 'bingAI') {
         const { jailbreak, toneStyle } = conversation;
         if (toneStyle) _title += `: ${toneStyle}`;
         if (jailbreak) _title += ` as Sydney`;

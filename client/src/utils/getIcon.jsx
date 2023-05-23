@@ -51,6 +51,10 @@ const getIcon = (props) => {
       const { modelLabel } = props;
       icon = <img src="/assets/palm.png" />;
       name = modelLabel || 'PaLM2';
+    } else if (endpoint === 'llama') {
+      const { modelLabel } = props;
+      icon = <img src="/assets/llama.png" />;
+      name = modelLabel || 'LLaMa';
     } else if (endpoint === 'bingAI') {
       const { jailbreak } = props;
       icon = <BingIcon size={size * 0.7} />;

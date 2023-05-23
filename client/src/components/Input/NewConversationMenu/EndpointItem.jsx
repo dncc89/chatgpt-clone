@@ -12,7 +12,8 @@ const alternateName = {
   azureOpenAI: 'Azure OpenAI',
   bingAI: 'Bing',
   chatGPTBrowser: 'ChatGPT',
-  google: 'PaLM'
+  google: 'PaLM',
+  llama: 'LLaMa'
 };
 
 export default function ModelItem({ endpoint, value, onSelect }) {

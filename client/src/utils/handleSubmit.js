@@ -62,7 +62,28 @@ const useMessageHandler = () => {
         token: endpointsConfig[endpoint]?.userProvide ? getToken() : null
       };
       responseSender = endpointOption.chatGptLabel ?? 'ChatGPT';
-    } else if (endpoint === 'bingAI') {
+    }
+    else if (endpoint === 'llama') {
+      endpointOption = {
+        endpoint,
+        model:
+          currentConversation?.model ??
+          endpointsConfig[endpoint]?.availableModels?.[0] ??
+          'gpt-3.5-turbo',
+        chatGptLabel: currentConversation?.chatGptLabel ?? null,
+        promptPrefix: currentConversation?.promptPrefix ?? null,
+        examples: currentConversation?.examples ?? [
+          { input: { content: '' }, output: { content: '' } }
+        ],
+        temperature: currentConversation?.temperature ?? 0.2,
+        maxOutputTokens: currentConversation?.maxOutputTokens ?? 1024,
+        topP: currentConversation?.topP ?? 0.95,
+        topK: currentConversation?.topK ?? 40,
+        token: endpointsConfig[endpoint]?.userProvide ? getToken() : null
+      };
+      responseSender = endpointOption.chatGptLabel ?? 'ChatGPT';
+    }
+    else if (endpoint === 'bingAI') {
       endpointOption = {
         endpoint,
         jailbreak: currentConversation?.jailbreak ?? false,

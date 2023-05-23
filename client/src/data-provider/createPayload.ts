@@ -9,6 +9,7 @@ export default function createPayload(submission: TSubmission) {
     azureOpenAI: '/api/ask/azureOpenAI',
     openAI: '/api/ask/openAI',
     google: '/api/ask/google',
+    llama: '/api/ask/llama',
     bingAI: '/api/ask/bingAI',
     chatGPTBrowser: '/api/ask/chatGPTBrowser'
   };
